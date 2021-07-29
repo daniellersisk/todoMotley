@@ -1,0 +1,2 @@
+Project Template: Create React App
+Additional Features: SearchBar (a user is able to search through a list of todos for todos containing the client query), Completed/Uncompleted/All Dropdown Menu (a user can sort todos by completed, uncompleted or all todos), Local Storage(A user is able to refresh the page or navigate away from the app and have access to where they left off in the application)

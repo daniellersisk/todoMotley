@@ -10,16 +10,15 @@ import SearchBar from './components/SearchBar'
 // display searched state 
 
   function App() {
+    // app level state
     const [inputText, setInputText] = useState("");  
     const [todos, setTodos] = useState([]) 
     const [status, setStatus] = useState("all"); 
     const [filteredTodos, setFilteredTodos] = useState([]);
     const [searchInputClientText, setSearchInputText] = useState(""); 
     const [searchedTodos, setSearchedTodos] = useState([]);
-
-    // runs when todos or sttaus state changes 
   
-
+// will run when the state of todos or status changes, given useEffect 
   const filterHandler = () =>{
   switch(status){
     case 'completed': setFilteredTodos(todos.filter(todo => todo.completed === true)); 
@@ -30,24 +29,22 @@ import SearchBar from './components/SearchBar'
     break; 
   }
   }
-  useEffect(() =>{
+  useEffect(() =>{ // runs when the app starts
     getLocalTodos();
   }, []);
 
-  useEffect(()=> {
+  useEffect(()=> { // checks for stats changes 
     filterHandler();
     saveLocalTodos();
   }, [todos, status]);
 
- // pass the state down to the component you want and then create handlers in the components that sets the state of the component with the method that was passee din 
 
 
-
-  // save to local storage 
-  const saveLocalTodos = () =>{
+  // saving to local storage 
+  const saveLocalTodos = () =>{ // runs each time the state of todos or the status of completion updates
      localStorage.setItem("todos", JSON.stringify(todos))
   }
-  const getLocalTodos = () =>{
+  const getLocalTodos = () =>{ // runs once when the app starts up
     if(localStorage.getItem('todos') === null){
       localStorage.setItem("todos", JSON.stringify([]));
     } else{
@@ -61,14 +58,10 @@ import SearchBar from './components/SearchBar'
       <header>
          <h1> Danielle's Todo List</h1>
       </header>
-      <h1> add todo</h1>
-      <SearchBar setSearchedTodos={setTodos} searchedTodos={searchedTodos} setSearchInputText={setSearchInputText} searchInputClientText={searchInputClientText} todos={todos}/>
+      <SearchBar setSearchedTodos={setSearchedTodos} searchedTodos={searchedTodos} setSearchInputText={setSearchInputText} searchInputClientText={searchInputClientText} todos={todos}/>
       <Form setStatus={setStatus} setInputText={setInputText} todos={todos} setTodos={setTodos} inputText={inputText}/>
       <TodoList filteredTodos={filteredTodos} setTodos={setTodos} todos={todos}/>
 
-     
-     
-  
     </div>
   );
 }

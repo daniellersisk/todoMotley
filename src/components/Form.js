@@ -1,11 +1,11 @@
 import React from "react";
 
-
+// this is where the input text for the add/update todos form is handled - it takes props from the application state in App.js 
 const Form = ({ setStatus, setInputText, todos, setTodos, inputText }) => {
-  const inputTextHandler = (e) => {
+  const inputTextHandler = (e) => { // onchange to set InputText 
     setInputText(e.target.value);
   };
-  const submitTodoHandler = (e) => {
+  const submitTodoHandler = (e) => { // submitHandler for onclick that adds todo
     e.preventDefault();
     setTodos([
       ...todos,
@@ -13,7 +13,7 @@ const Form = ({ setStatus, setInputText, todos, setTodos, inputText }) => {
     ]);
     setInputText("");
   };
-  const statusHandler = (e) =>{
+  const statusHandler = (e) =>{ // sets the status to all, complete or incomplete based on the list item choice
     setStatus(e.target.value)
     
   }
@@ -27,8 +27,9 @@ const Form = ({ setStatus, setInputText, todos, setTodos, inputText }) => {
         placeholder="Add todos here"
 
       />
+    
       <button onClick={submitTodoHandler} className="todo-button" type="submit">
-        <i className="fas fa-plus-square"></i>
+        <i className="fas fa-plus-square"></i> Add
       </button>
       <div onChange={statusHandler}className="select">
         <select name="todos" className="filter-todo">

@@ -22,3 +22,49 @@ font-size: 1rem;
  pointer-events: none; 
 
 }
+.App{
+    text-align: center;
+}
+ul{
+    list-style-type: none;
+}
+.App-logo{
+    height:40vmin; 
+    pointer-events: none;
+}
+
+form button{
+    color: black;
+    background: white
+
+}
+form button:hover {
+    background: grey;
+    color: white
+
+}
+
+todo-container{
+    display:flex; 
+    justify-content: center;
+    align-items: center ;
+}
+
+.todo li{
+    flex:1; 
+}
+.todo-list{
+    min-width: 30%; 
+    list-style: none; 
+}
+.todo{
+    margin: 0.5rem; 
+    font-size: 1.5rem;
+    color:black; 
+    justify-content: space-between;
+    align-items: center;
+    transition: all 1s ease;
+}
+body{
+    background-image: linear-gradient(0.25turn, #3f87a6, #ebf8e1, #f69d3c);
+}
