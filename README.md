@@ -1,2 +1,3 @@
 Project Template: Create React App
 Additional Features: SearchBar (a user is able to search through a list of todos for todos containing the client query), Completed/Uncompleted/All Dropdown Menu (a user can sort todos by completed, uncompleted or all todos), Local Storage(A user is able to refresh the page or navigate away from the app and have access to where they left off in the application)
+There is a bug in the search bar - all of the the todo items appear briefly before the reset happens. Would love some feedback on how to prevent this from happpening. My only thought was a prevent default but that did not lead me to a correct solution. 
