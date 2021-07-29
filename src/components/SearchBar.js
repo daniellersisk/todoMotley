@@ -1,35 +1,31 @@
 import React from "react";
 import Todo from "./Todo"
 
-const SearchBar = ({
+const SearchBar = ({ // props needed from app level state
   setSearchedTodos,
   searchedTodos,
   searchInputClientText,
   setSearchInputText,
   todos,
 }) => {
-  const SearchBarTextHandler = (e) => {
+  const SearchBarTextHandler = (e) => { // sets the client input text onchange 
     setSearchInputText(e.target.value);
   };
     const SearchBarSubmitHandler = (e) =>{
         e.preventDefault()
-        let query = e.target.value.toLowerCase() // client search submissio
+        let query = e.target.value.toLowerCase() // client search submission
          if(!query){
              setSearchedTodos(todos)
          }
-          let newSearchedTodos = todos.filter((todo)=>{
+          let newSearchedTodos = todos.filter((todo)=>{ // checking if each todo contains client query
               const todoName = todo.text.toLowerCase();
-              return todoName.includes(query)
+              return todoName.includes(query) // if so, return it, if not, dont include 
           })
-          setSearchedTodos(newSearchedTodos)
+          setSearchedTodos(newSearchedTodos) // setting state of searched todos to the result of the search
     }
-//STOPPED HERE 
-    const resetSearchBar = ()=>{
-        console.log(todos)
+    const resetSearchBar = ()=>{ // resetting seach bar back to all todos
         setSearchedTodos(todos)
     }
-  // need input text handler method for this form
-  // need submit handler that maps trhough the todos and checks for vals and sets the searchbar state equal to the result
   return (
     <form>
       <label htmlFor="header-search"></label>
@@ -46,7 +42,7 @@ const SearchBar = ({
         Reset Search
       </button>
       <ul className="todo-list"> 
-      {searchedTodos.map(searchedTodo =>(
+      {searchedTodos.map(searchedTodo =>( // using the todo component for better display of the searchedtodos 
        <Todo setTodos={setSearchedTodos} todos={todos} todo={searchedTodo} text={searchedTodo.text} key={searchedTodo.id} />
       ))}
       </ul>
