@@ -24,7 +24,7 @@ const SearchBar = ({ // props needed from app level state
           setSearchedTodos(newSearchedTodos) // setting state of searched todos to the result of the search
     }
     const resetSearchBar = ()=>{ // resetting seach bar back to all todos
-        setSearchedTodos(todos)
+        setSearchedTodos([])
     }
   return (
     <form>
@@ -38,7 +38,7 @@ const SearchBar = ({ // props needed from app level state
       <button onClick={SearchBarSubmitHandler} value={searchInputClientText} type="submit">
         Search
       </button>
-      <button onClick={resetSearchBar} type="submit">
+      <button onClick={resetSearchBar} type="button">
         Reset Search
       </button>
       <ul className="todo-list"> 
