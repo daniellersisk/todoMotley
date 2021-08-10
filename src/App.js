@@ -11,6 +11,7 @@ import SearchBar from './components/SearchBar'
 
   function App() {
     // app level state
+    //When we declare a state variable with useState, it returns a pair — an array with two items. The first item is the current value, and the second is a function that lets us update it.
     const [inputText, setInputText] = useState("");  
     const [todos, setTodos] = useState([]) 
     const [status, setStatus] = useState("all"); 
@@ -19,6 +20,7 @@ import SearchBar from './components/SearchBar'
     const [searchedTodos, setSearchedTodos] = useState([]);
   
 // will run when the state of todos or status changes, given useEffect 
+// determines which version of the todo list is rendered in the todolist component
   const filterHandler = () =>{
   switch(status){
     case 'completed': setFilteredTodos(todos.filter(todo => todo.completed === true)); 
@@ -29,12 +31,12 @@ import SearchBar from './components/SearchBar'
     break; 
   }
   }
-  useEffect(() =>{ // runs when the app starts
+  useEffect(() =>{ // runs when the app starts up 
     getLocalTodos();
   }, []);
 
-  useEffect(()=> { // checks for stats changes 
-    filterHandler();
+  useEffect(()=> { // checks for stats changes in todos or ststus and will run the following methods when state change happens 
+    filterHandler(); // sets filtred todos based on completion status determined by event click 
     saveLocalTodos();
   }, [todos, status]);
 
@@ -44,7 +46,7 @@ import SearchBar from './components/SearchBar'
   const saveLocalTodos = () =>{ // runs each time the state of todos or the status of completion updates
      localStorage.setItem("todos", JSON.stringify(todos))
   }
-  const getLocalTodos = () =>{ // runs once when the app starts up
+  const getLocalTodos = () =>{ // runs once when the app starts up, think of this as a hashmap lookup table 
     if(localStorage.getItem('todos') === null){
       localStorage.setItem("todos", JSON.stringify([]));
     } else{

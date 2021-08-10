@@ -2,10 +2,12 @@ import React from 'react'
 
 
 const Todo = ({text, key, setTodos, todos ,todo})=> {
- const deleteHandler = () => { // removes a todo
-   setTodos(todos.filter(element => element.id !== todo.id)) // setTodos iterates through ll todos looking for a specific todoID
- }
- const completeHandler = () =>{  // marks todos complete that have been clicked 
+  // ddont havr to pass in todo to the methods because the function has access to each todo as a prop on the todo item. 
+ // each todo has the following methods available to them
+  const deleteHandler = () => { // removes a todo
+   setTodos(todos.filter(element => element.id !== todo.id)) // setTodos as lomg as todo id isnt equal to the currentodo
+  }
+ const completeHandler = () =>{  // checking to find the todo id that matched the current todo clicked 
      setTodos(todos.map((item) => {
          if(item.id === todo.id){ // looking for id of client click to match one of the ids in the list
              return {
@@ -30,6 +32,6 @@ const Todo = ({text, key, setTodos, todos ,todo})=> {
 
     );
 
+
 }
- 
 export default Todo; 

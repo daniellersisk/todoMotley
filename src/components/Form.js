@@ -14,7 +14,7 @@ const Form = ({ setStatus, setInputText, todos, setTodos, inputText }) => {
     setInputText("");
   };
   const statusHandler = (e) =>{ // sets the status to all, complete or incomplete based on the list item choice
-    setStatus(e.target.value)
+    setStatus(e.target.value) // usesstet ain app.js determoines when to rub nthe filter sttaus function in app.js 
     
   }
   return (
@@ -31,6 +31,7 @@ const Form = ({ setStatus, setInputText, todos, setTodos, inputText }) => {
       <button onClick={submitTodoHandler} className="todo-button" type="submit">
         <i className="fas fa-plus-square"></i> Add
       </button>
+      
       <div onChange={statusHandler}className="select">
         <select name="todos" className="filter-todo">
           <option value="all">All</option>
